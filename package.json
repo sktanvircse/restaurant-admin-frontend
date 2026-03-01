@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-tooltip": "^1.2.8",
     "axios": "^1.13.6",
@@ -19,6 +20,7 @@
     "jspdf-autotable": "^5.0.7",
     "lucide-react": "^0.575.0",
     "next": "16.1.6",
+    "rc-pagination": "^5.1.0",
     "rc-table": "^7.55.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
