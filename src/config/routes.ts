@@ -7,5 +7,6 @@ export const Routes = {
   foods: "/admin/foods",
   tables: "/admin/tables",
   staffs: "/admin/staffs",
-  roles: "/admin/roles"
+  roles: "/admin/roles",
+  orders: "/admin/orders",
 };
