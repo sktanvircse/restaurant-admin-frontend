@@ -15,7 +15,7 @@ import { Routes } from "@/config/routes";
 const CategoriesEditPage = () => {
   const { id } = useParams();
   const router = useRouter();
-  const { getCategories, updateCategory } = useCategoryActions();
+  const { getCategory, updateCategory } = useCategoryActions();
 
   const [name, setName] = useState("");
   const [isActive, setIsActive] = useState(true);
@@ -25,12 +25,11 @@ const CategoriesEditPage = () => {
   }, []);
 
   const loadCategory = async () => {
-    const data = await getCategories();
-    const found = data.find((item: any) => item.id === Number(id));
+    const data = await getCategory(Number(id));
 
-    if (found) {
-      setName(found.name);
-      setIsActive(found.is_active);
+    if (data) {
+      setName(data.name);
+      setIsActive(data.is_active);
     }
   };
 

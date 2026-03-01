@@ -9,6 +9,11 @@ export const useCategoryActions = () => {
     return res.data;
   };
 
+  const getCategory = async (id: number) => {
+    const res = await service.find(id);
+    return res.data;
+  };
+
   const createCategory = async (data: CreateCategoryInput) => {
     const res = await service.create(
       data as unknown as Record<string, unknown>,
@@ -29,5 +34,11 @@ export const useCategoryActions = () => {
     return res.data;
   };
 
-  return { getCategories, createCategory, updateCategory, deleteCategory };
+  return {
+    getCategories,
+    createCategory,
+    updateCategory,
+    deleteCategory,
+    getCategory,
+  };
 };
