@@ -5,4 +5,5 @@ export const Routes = {
   register: "/admin/register",
   categories: "/admin/categories",
   foods: "/admin/foods",
+  tables : "/admin/tables"
 };
