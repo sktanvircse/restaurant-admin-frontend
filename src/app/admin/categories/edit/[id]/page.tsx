@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import CustomLayout from "@/components/layout/CustomLayout";
-import { Card, CardContent } from "@/components/ui/card";
-import { useParams, useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useCategoryActions } from "@/modules/admin/categories/categories.action";
-import { Switch } from "@/components/ui/switch";
 import PageHeader from "@/components/shared/PageHeader";
-import { Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
 import { Routes } from "@/config/routes";
+import { useCategoryActions } from "@/modules/admin/categories/categories.action";
+import { LayoutDashboard } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const CategoriesEditPage = () => {
   const { id } = useParams();
@@ -48,7 +48,7 @@ const CategoriesEditPage = () => {
     <CustomLayout>
       <Card className="p-6 mx-auto">
         <PageHeader
-          icon={<Users />}
+          icon={<LayoutDashboard />}
           title="Edit Category"
           breadcrumbs={[
             { label: "Edit Category" },

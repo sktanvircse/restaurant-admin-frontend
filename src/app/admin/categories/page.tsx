@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import CustomLayout from "@/components/layout/CustomLayout";
+import Pagination from "@/components/molecules/Pagination";
+import RCTable from "@/components/molecules/RCTable";
+import PageHeader from "@/components/shared/PageHeader";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Routes } from "@/config/routes";
+import { useCategoryActions } from "@/modules/admin/categories/categories.action";
+import { LayoutDashboard, Pencil, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Pencil, Trash2, Plus, Users } from "lucide-react";
-import { useCategoryActions } from "@/modules/admin/categories/categories.action";
-import { Button } from "@/components/ui/button";
-import RCTable from "@/components/molecules/RCTable";
-import Pagination from "@/components/molecules/Pagination";
-import PageHeader from "@/components/shared/PageHeader";
-import { Routes } from "@/config/routes";
+import React, { useEffect, useState } from "react";
 
 interface Category {
   id: number;
@@ -106,7 +106,7 @@ const CategoriesPage = () => {
         <CardContent className="p-0!">
           {/* Header */}
           <PageHeader
-            icon={<Users />}
+            icon={<LayoutDashboard />}
             title="Category List"
             breadcrumbs={[
               { label: "Categories" },

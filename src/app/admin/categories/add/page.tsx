@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
 import CustomLayout from "@/components/layout/CustomLayout";
-import { Card, CardContent } from "@/components/ui/card";
-import { useRouter } from "next/navigation";
+import PageHeader from "@/components/shared/PageHeader";
 import { Button } from "@/components/ui/button";
-import { useCategoryActions } from "@/modules/admin/categories/categories.action";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import PageHeader from "@/components/shared/PageHeader";
-import { Users } from "lucide-react";
 import { Routes } from "@/config/routes";
+import { useCategoryActions } from "@/modules/admin/categories/categories.action";
+import { LayoutDashboard } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const CategoriesAddPage = () => {
   const router = useRouter();
@@ -35,7 +35,7 @@ const CategoriesAddPage = () => {
       <Card className="p-6  mx-auto">
         <CardContent className="p-0!">
           <PageHeader
-            icon={<Users />}
+            icon={<LayoutDashboard />}
             title="Add Category"
             breadcrumbs={[
               { label: "Add Category" },
