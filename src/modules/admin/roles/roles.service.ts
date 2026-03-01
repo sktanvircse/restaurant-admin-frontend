@@ -2,12 +2,8 @@
 "use client";
 
 import { useBaseService } from "@/modules/core/base.service";
-
-interface Role {
-  id: number;
-  name: string;
-}
+import { Role, CreateRoleInput } from "./roles.type";
 
 export const useRoleService = () => {
-  return useBaseService<Role>("/roles");
+  return useBaseService<Role, CreateRoleInput>("/roles");
 };

@@ -7,4 +7,5 @@ export const Routes = {
   foods: "/admin/foods",
   tables: "/admin/tables",
   staffs: "/admin/staffs",
+  roles: "/admin/roles"
 };
