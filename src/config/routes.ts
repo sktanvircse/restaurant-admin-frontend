@@ -9,4 +9,5 @@ export const Routes = {
   staffs: "/admin/staffs",
   roles: "/admin/roles",
   orders: "/admin/orders",
+  payments: "/admin/payments",
 };
