@@ -1,4 +1,4 @@
-import { useTableService } from "./tables.schema";
+import { useTableService } from "./tables.service";
 import { CreateTableInput } from "./tables.type";
 
 export const useTableActions = () => {

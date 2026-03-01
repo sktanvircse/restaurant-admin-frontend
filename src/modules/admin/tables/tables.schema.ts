@@ -1,7 +1,7 @@
-import { useBaseService } from "@/modules/core/base.service";
-import { Table, CreateTableInput } from "./tables.type";
-import { API_ENDPOINTS } from "@/endpoints/AdminApiEndPoints";
+import { z } from "zod";
 
-export const useTableService = () => {
-  return useBaseService<Table, CreateTableInput>(API_ENDPOINTS.TABLES);
-};
+export const tableSchema = z.object({
+  table_number: z.string().min(1, "Table number is required"),
+  capacity: z.number().positive("Capacity must be positive"),
+  status: z.enum(["available", "occupied"]).optional().default("available"),
+});
