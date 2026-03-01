@@ -22,6 +22,7 @@
     "rc-table": "^7.55.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-toastify": "^11.0.5",
     "tailwind-merge": "^3.5.0",
     "zustand": "^5.0.11"
   },
