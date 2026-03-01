@@ -1,30 +1,76 @@
+// src/modules/admin/staffs/staffs.action.ts
+"use client";
+
+import { toast } from "react-toastify";
 import { useStaffService } from "./staffs.service";
-import { CreateStaffInput } from "./staffs.type";
+import { CreateStaffInput, Staff, UpdateStaffInput } from "./staffs.type";
 
 export const useStaffActions = () => {
   const service = useStaffService();
 
-  const getStaffs = async () => {
-    const res = await service.findAll();
-    return res.data;
+  const getStaffs = async (): Promise<Staff[]> => {
+    try {
+      const res = await service.findAll();
+      return Array.isArray(res.data) ? res.data : [];
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to fetch staffs");
+      return [];
+    }
+  };
+
+  const getStaff = async (id: number): Promise<Staff | null> => {
+    try {
+      const res = await service.find(id);
+      return res.data || null;
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to fetch staff");
+      return null;
+    }
   };
 
   const createStaff = async (data: CreateStaffInput) => {
-    const res = await service.create(
-      data as unknown as Record<string, unknown>,
-    );
-    return res.data;
+    try {
+      const res = await service.create(
+        data as unknown as Record<string, unknown>,
+      );
+      toast.success("Staff added successfully");
+      return res.data;
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to add staff");
+      throw error;
+    }
   };
 
-  const updateStaff = async (id: number, data: Partial<CreateStaffInput>) => {
-    const res = await service.update(id, data);
-    return res.data;
+  const updateStaff = async (id: number, data: UpdateStaffInput) => {
+    try {
+      const res = await service.update(
+        id,
+        data as unknown as Record<string, unknown>,
+      );
+      toast.success("Staff updated successfully");
+      return res.data;
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to update staff");
+      throw error;
+    }
   };
 
   const deleteStaff = async (id: number) => {
-    const res = await service.delete(id);
-    return res.data;
+    try {
+      const res = await service.delete(id);
+      toast.success("Staff deleted successfully");
+      return res.data;
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to delete staff");
+      throw error;
+    }
   };
 
-  return { getStaffs, createStaff, updateStaff, deleteStaff };
+  return {
+    getStaffs,
+    getStaff,
+    createStaff,
+    updateStaff,
+    deleteStaff,
+  };
 };

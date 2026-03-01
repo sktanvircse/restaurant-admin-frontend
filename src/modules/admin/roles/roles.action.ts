@@ -1,30 +1,21 @@
+// src/modules/admin/roles/roles.action.ts
+"use client";
+
+import { toast } from "react-toastify";
 import { useRoleService } from "./roles.service";
-import { CreateRoleInput } from "./roles.type";
 
 export const useRoleActions = () => {
   const service = useRoleService();
 
   const getRoles = async () => {
-    const res = await service.findAll();
-    return res.data;
+    try {
+      const res = await service.findAll();
+      return Array.isArray(res.data) ? res.data : [];
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Failed to fetch roles");
+      return [];
+    }
   };
 
-  const createRole = async (data: CreateRoleInput) => {
-    const res = await service.create(
-      data as unknown as Record<string, unknown>,
-    );
-    return res.data;
-  };
-
-  const updateRole = async (id: number, data: Partial<CreateRoleInput>) => {
-    const res = await service.update(id, data as Record<string, unknown>);
-    return res.data;
-  };
-
-  const deleteRole = async (id: number) => {
-    const res = await service.delete(id);
-    return res.data;
-  };
-
-  return { getRoles, createRole, updateRole, deleteRole };
+  return { getRoles };
 };
