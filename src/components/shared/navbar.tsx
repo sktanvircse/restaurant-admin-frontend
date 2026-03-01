@@ -35,7 +35,7 @@ export function Navbar() {
       </button>
 
       {/* Search bar */}
-      <div className="relative hidden sm:flex items-center">
+      {/* <div className="relative hidden sm:flex items-center">
         <Search className="absolute left-3 w-3.5 h-3.5 text-gray-400 pointer-events-none" />
         <input
           placeholder="Search anything…"
@@ -44,13 +44,13 @@ export function Navbar() {
         <kbd className="absolute right-3 text-[10px] text-gray-300 dark:text-white/20 font-mono">
           ⌘K
         </kbd>
-      </div>
+      </div> */}
 
       {/* Spacer */}
       <div className="flex-1" />
 
       {/* Notifications */}
-      <div className="relative">
+      {/* <div className="relative">
         <button
           onClick={() => {
             setNotifOpen((p) => !p);
@@ -99,7 +99,7 @@ export function Navbar() {
             ))}
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* Profile */}
       <div className="relative">
@@ -134,7 +134,7 @@ export function Navbar() {
                 john@example.com
               </p>
             </div>
-            {["Profile", "Settings", "Help"].map((item) => (
+            {["Profile", "Settings",].map((item) => (
               <button
                 key={item}
                 className="w-full text-left px-4 py-2.5 text-[13px] text-gray-600 dark:text-white/60 hover:bg-gray-50 dark:hover:bg-white/4 hover:text-gray-900 dark:hover:text-white transition-colors"
