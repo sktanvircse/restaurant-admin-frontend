@@ -1,12 +1,13 @@
 // src/modules/admin/categories/categories.service.ts
 "use client";
 
+import { API_ENDPOINTS } from "@/endpoints/AdminApiEndPoints";
 import { useBaseService } from "@/modules/core/base.service";
 import { Category, CreateCategoryInput } from "./categories.type";
 
 export const useCategoryService = () => {
   const baseService = useBaseService<Category, CreateCategoryInput>(
-    "/categories",
+    API_ENDPOINTS.CATEGORIES,
   );
 
   return {

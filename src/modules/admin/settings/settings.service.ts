@@ -3,10 +3,11 @@
 
 import { useBaseService } from "@/modules/core/base.service";
 import { Settings, UpdateSettingsInput } from "./settings.type";
+import { API_ENDPOINTS } from "@/endpoints/AdminApiEndPoints";
 
 export const useSettingsService = () => {
   const baseService = useBaseService<Settings, UpdateSettingsInput>(
-    "/settings",
+    API_ENDPOINTS.SETTINGS,
   );
 
   return {
