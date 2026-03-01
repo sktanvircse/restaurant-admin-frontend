@@ -1,3 +1,4 @@
+// src/app/admin/categories/page.tsx
 "use client";
 
 import CustomLayout from "@/components/layout/CustomLayout";
@@ -12,11 +13,12 @@ import { LayoutDashboard, Pencil, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 interface Category {
   id: number;
   name: string;
-  is_active: boolean;
+  status: number;
   created_at?: string;
 }
 
@@ -25,6 +27,7 @@ const CategoriesPage = () => {
   const { getCategories, deleteCategory } = useCategoryActions();
 
   const [originalData, setOriginalData] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
   const [sortedInfo, setSortedInfo] = useState<any>({});
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -34,13 +37,28 @@ const CategoriesPage = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await getCategories();
-    setOriginalData(data || []);
+    setLoading(true);
+    try {
+      const data = await getCategories();
+      setOriginalData(data || []);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDelete = async (id: number) => {
-    await deleteCategory(id);
-    fetchData();
+    if (!confirm("Are you sure you want to delete this category?")) {
+      return;
+    }
+
+    try {
+      await deleteCategory(id);
+      fetchData();
+    } catch (error) {
+      console.error("Error deleting category:", error);
+    }
   };
 
   const handleSort = (columnKey: string) => {
@@ -64,9 +82,9 @@ const CategoriesPage = () => {
     },
     {
       title: "Status",
-      dataIndex: "is_active",
-      render: (value: boolean) =>
-        value ? (
+      dataIndex: "status",
+      render: (value: number) =>
+        value === 1 ? (
           <span className="text-green-600 font-semibold">Active</span>
         ) : (
           <span className="text-red-500 font-semibold">Inactive</span>
@@ -101,7 +119,6 @@ const CategoriesPage = () => {
 
   return (
     <CustomLayout>
-      {" "}
       <Card className="p-6">
         <CardContent className="p-0!">
           {/* Header */}
@@ -122,25 +139,35 @@ const CategoriesPage = () => {
                   </Button>
                 </Link>
               </div>
-              {/* Table */}
-              <RCTable
-                originData={originalData}
-                useColumn={useColumn}
-                sortedInfo={sortedInfo}
-                handleSort={handleSort}
-                maxWidth={1200}
-              />
-              {/* Pagination */}
-              <div className="border-t mt-4 pt-4 flex justify-end">
-                <Pagination
-                  pageSize={itemsPerPage}
-                  current={currentPage}
-                  total={totalDataLength}
-                  onChange={(page: React.SetStateAction<number>) =>
-                    setCurrentPage(page)
-                  }
-                />
-              </div>
+
+              {/* Loading State */}
+              {loading ? (
+                <div className="flex justify-center items-center py-12">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                </div>
+              ) : (
+                <>
+                  {/* Table */}
+                  <RCTable
+                    originData={originalData}
+                    useColumn={useColumn}
+                    sortedInfo={sortedInfo}
+                    handleSort={handleSort}
+                    maxWidth={1200}
+                  />
+                  {/* Pagination */}
+                  <div className="border-t mt-4 pt-4 flex justify-end">
+                    <Pagination
+                      pageSize={itemsPerPage}
+                      current={currentPage}
+                      total={totalDataLength}
+                      onChange={(page: React.SetStateAction<number>) =>
+                        setCurrentPage(page)
+                      }
+                    />
+                  </div>
+                </>
+              )}
             </CardContent>
           </Card>
         </CardContent>
