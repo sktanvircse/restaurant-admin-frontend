@@ -10,14 +10,37 @@ import { usePathname } from "next/navigation";
 
 const paginationStyles = {
   base: {
-    item: "[&>.rc-pagination-item>a]:!no-underline [&>.rc-pagination-item>a]:font-medium [&>li.rc-pagination-item]:border-muted [&>.rc-pagination-item:not(.rc-pagination-item-active)]:bg-transparent",
-    icon: "[&>.rc-pagination-prev]:align-baseline [&>.rc-pagination-next]:align-baseline",
-    outline:
-      "[&>.rc-pagination-item]:leading-7 [&>.rc-pagination-item]:border-0",
-    jumperDiv:
-      "[&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-gray-500 dark:text-white",
-    jumperInput:
-      "[&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!py-[3px] [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:border-muted [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:ring-0",
+    item: `
+      [&>.rc-pagination-item>a]:!no-underline
+      [&>.rc-pagination-item>a]:font-medium
+      [&>li.rc-pagination-item]:border-green-200
+      [&>.rc-pagination-item:not(.rc-pagination-item-active)]:bg-transparent
+      [&>.rc-pagination-item:not(.rc-pagination-item-active)>a]:text-green-700
+      [&>.rc-pagination-item:not(.rc-pagination-item-active)]:hover:border-green-400
+      [&>.rc-pagination-item:not(.rc-pagination-item-active)]:hover:bg-green-50
+      dark:[&>.rc-pagination-item:not(.rc-pagination-item-active)>a]:text-green-300
+    `,
+    icon: `
+      [&>.rc-pagination-prev]:align-baseline
+      [&>.rc-pagination-next]:align-baseline
+    `,
+    outline: `
+      [&>.rc-pagination-item]:leading-7
+      [&>.rc-pagination-item]:border-0
+    `,
+    jumperDiv: `
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-sm
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-green-700
+      dark:[&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-green-300
+    `,
+    jumperInput: `
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!py-[3px]
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:text-sm
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:border-green-300
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:ring-0
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:focus:border-green-500
+      [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:focus:ring-green-200
+    `,
   },
   rounded: {
     none: "[&>.rc-pagination-item]:rounded-none [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:rounded-none",
@@ -30,31 +53,65 @@ const paginationStyles = {
     solid: {
       base: "",
       color: {
-        primary:
-          "[&>.rc-pagination-item-active]:bg-primary [&>.rc-pagination-item-active]:dark:!bg-[#2f3e52] [&>.rc-pagination-item-active>a]:!text-primary-foreground [&>li.rc-pagination-item-active]:border-primary [&>.rc-pagination-item-active]:hover:border-primary [&>.rc-pagination-item-active]:focus:border-primary",
-        secondary:
-          "[&>.rc-pagination-item-active]:bg-secondary [&>.rc-pagination-item-active>a]:!text-secondary-foreground [&>li.rc-pagination-item-active]:border-secondary [&>.rc-pagination-item-active]:hover:border-secondary [&>.rc-pagination-item-active]:focus:border-secondary",
-        danger:
-          "[&>.rc-pagination-item-active]:bg-red [&>.rc-pagination-item-active>a]:!text-white [&>li.rc-pagination-item-active]:border-red [&>.rc-pagination-item-active]:hover:border-red [&>.rc-pagination-item-active]:focus:border-red",
+        primary: `
+          [&>.rc-pagination-item-active]:bg-green-700
+          [&>.rc-pagination-item-active]:dark:!bg-green-800
+          [&>.rc-pagination-item-active>a]:!text-white
+          [&>li.rc-pagination-item-active]:border-green-700
+          [&>.rc-pagination-item-active]:hover:border-green-800
+          [&>.rc-pagination-item-active]:focus:border-green-800
+        `,
+        secondary: `
+          [&>.rc-pagination-item-active]:bg-green-500
+          [&>.rc-pagination-item-active>a]:!text-white
+          [&>li.rc-pagination-item-active]:border-green-500
+          [&>.rc-pagination-item-active]:hover:border-green-600
+          [&>.rc-pagination-item-active]:focus:border-green-600
+        `,
+        danger: `
+          [&>.rc-pagination-item-active]:bg-red-500
+          [&>.rc-pagination-item-active>a]:!text-white
+          [&>li.rc-pagination-item-active]:border-red-500
+          [&>.rc-pagination-item-active]:hover:border-red-600
+          [&>.rc-pagination-item-active]:focus:border-red-600
+        `,
       },
     },
     flat: {
       base: "",
       color: {
-        primary:
-          "[&>.rc-pagination-item-active]:bg-primary-lighter [&>li.rc-pagination-item-active]:border-primary-lighter [&>.rc-pagination-item-active>a]:text-primary-dark [&>.rc-pagination-item-active>a]:hover:text-primary-dark [&>.rc-pagination-item-active>a]:focus:text-primary-dark [&>.rc-pagination-item-active]:hover:border-primary-lighter [&>.rc-pagination-item-active]:focus:border-primary-lighter",
-        secondary:
-          "[&>.rc-pagination-item-active]:bg-secondary-lighter [&>li.rc-pagination-item-active]:border-secondary-lighter [&>.rc-pagination-item-active>a]:text-secondary-dark [&>.rc-pagination-item-active>a]:hover:text-secondary-dark [&>.rc-pagination-item-active>a]:focus:text-secondary-dark [&>.rc-pagination-item-active]:hover:border-secondary-lighter [&>.rc-pagination-item-active]:focus:border-secondary-lighter",
-        danger:
-          "[&>.rc-pagination-item-active]:bg-red-lighter [&>li.rc-pagination-item-active]:border-red-lighter [&>.rc-pagination-item-active>a]:text-red-dark [&>.rc-pagination-item-active>a]:hover:text-red-dark [&>.rc-pagination-item-active>a]:focus:text-red-dark [&>.rc-pagination-item-active]:hover:border-red-lighter [&>.rc-pagination-item-active]:focus:border-red-lighter",
+        primary: `
+          [&>.rc-pagination-item-active]:bg-green-100
+          [&>li.rc-pagination-item-active]:border-green-200
+          [&>.rc-pagination-item-active>a]:text-green-800
+          [&>.rc-pagination-item-active>a]:hover:text-green-800
+          [&>.rc-pagination-item-active]:hover:border-green-200
+          [&>.rc-pagination-item-active]:focus:border-green-200
+        `,
+        secondary: `
+          [&>.rc-pagination-item-active]:bg-green-50
+          [&>li.rc-pagination-item-active]:border-green-100
+          [&>.rc-pagination-item-active>a]:text-green-700
+          [&>.rc-pagination-item-active>a]:hover:text-green-700
+          [&>.rc-pagination-item-active]:hover:border-green-100
+          [&>.rc-pagination-item-active]:focus:border-green-100
+        `,
+        danger: `
+          [&>.rc-pagination-item-active]:bg-red-50
+          [&>li.rc-pagination-item-active]:border-red-100
+          [&>.rc-pagination-item-active>a]:text-red-700
+          [&>.rc-pagination-item-active>a]:hover:text-red-700
+          [&>.rc-pagination-item-active]:hover:border-red-100
+          [&>.rc-pagination-item-active]:focus:border-red-100
+        `,
       },
     },
   },
 };
 
 const iconStyles = {
-  base: "text-foreground",
-  outline: "border border-muted p-[5px]",
+  base: "text-green-700 dark:text-green-300",
+  outline: "border border-green-300 p-[5px]",
   center: "inline-block align-middle",
   rounded: {
     none: "rounded-none",
@@ -79,7 +136,8 @@ const PrevIcon = ({ lang, icon, rounded, outline, className }: IconProps) => (
       iconStyles.base,
       outline ? iconStyles.outline : iconStyles.center,
       iconStyles.rounded[rounded],
-      (className = "text-xs font-bold text-slate-300 dark:text-white")
+      "text-xs font-bold text-green-600 hover:text-green-800 dark:text-green-300 dark:hover:text-green-100 transition-colors",
+      className,
     )}
   >
     {icon || (
@@ -89,8 +147,6 @@ const PrevIcon = ({ lang, icon, rounded, outline, className }: IconProps) => (
         ) : (
           <ChevronLeftIcon className="h-4 w-4" />
         )}
-
-        {/* <span className="ml-2 hidden md:inline-block dark:text-white">Previous</span> */}
       </div>
     )}
   </div>
@@ -102,12 +158,12 @@ const NextIcon = ({ lang, icon, rounded, outline, className }: IconProps) => (
       iconStyles.base,
       outline ? iconStyles.outline : iconStyles.center,
       iconStyles.rounded[rounded],
-      (className = "text-xs font-bold text-slate-300 dark:text-white")
+      "text-xs font-bold text-green-600 hover:text-green-800 dark:text-green-300 dark:hover:text-green-100 transition-colors",
+      className,
     )}
   >
     {icon || (
       <div className="flex items-center">
-        {/* <span className="mr-2 hidden md:inline-block dark:text-white">Next</span> */}
         {lang === "ar" ? (
           <ChevronLeftIcon className="h-4 w-4" />
         ) : (
@@ -125,7 +181,8 @@ const JumpPrevIcon = ({ icon, rounded, outline, className }: IconProps) => (
       outline ? iconStyles.outline : iconStyles.center,
       iconStyles.rounded[rounded],
       !icon && outline && "py-0 leading-6.5",
-      className
+      "text-green-500 hover:text-green-700 dark:text-green-400",
+      className,
     )}
   >
     {icon || "•••"}
@@ -139,7 +196,8 @@ const JumpNextIcon = ({ icon, rounded, outline, className }: IconProps) => (
       outline ? iconStyles.outline : iconStyles.center,
       iconStyles.rounded[rounded],
       !icon && outline && "py-0 leading-6.5",
-      className
+      "text-green-500 hover:text-green-700 dark:text-green-400",
+      className,
     )}
   >
     {icon || "•••"}
@@ -190,9 +248,10 @@ export default function Pagination({
 }: PaginationProps) {
   const pathname = usePathname();
   const lang = pathname.split("/")[1];
+
   return (
     <RcPagination
-      locale={ localeDefault}
+      locale={localeDefault}
       nextIcon={
         <NextIcon
           lang={lang}
@@ -254,7 +313,7 @@ export default function Pagination({
         paginationStyles.rounded[rounded],
         paginationStyles.variant[variant].base,
         paginationStyles.variant[variant].color[color],
-        className
+        className,
       )}
       {...props}
     />

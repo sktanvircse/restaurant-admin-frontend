@@ -25,3 +25,156 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.app-input {
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid #d1dbd7 !important; /* light neutral border (#d1d5db ≈ slate-300) */
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.app-input:focus-visible {
+  outline: none;
+  border: 1px solid #3bd38f !important;
+  box-shadow: 0px 0px 2px 2px #bffedb !important;
+}
+.app-input:disabled {
+  outline: none;
+  font-size: 14px;
+  opacity: 0.8 !important;
+  border: 1px solid white;
+  background: rgb(243, 243, 243) !important;
+  cursor: not-allowed !important;
+}
+.app-input:not(:disabled):hover {
+  outline: none;
+  border: 1px solid #3bd38f !important;
+  box-shadow: 0px 0px 2px 2px #bffedb !important;
+}
+.dark .app-input {
+  border: 1px solid #475569 !important;
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+.dark .app-input:focus-visible {
+  border: 1px solid #60a5fa !important;
+  box-shadow: 0px 0px 2px 2px #3b82f6 !important;
+}
+
+.dark .app-input:disabled {
+  border: 1px solid #1e293b !important;
+  background: #334155 !important;
+  color: #cbd5e1;
+}
+
+.dark .app-input:not(:disabled):hover {
+  border: 1px solid #60a5fa !important;
+  box-shadow: 0px 0px 2px 2px #3b82f6 !important;
+}
+
+.app-input-with-dropdown {
+  height: 50px;
+  border-radius: 8px;
+  border: 0px solid transparent !important; /* light neutral border (#d1d5db ≈ slate-300) */
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.app-input-with-dropdown:focus-visible {
+  outline: none;
+  border: 0px solid transparent !important;
+  box-shadow: 0px 0px 0px 0px transparent !important;
+}
+.app-input-with-dropdown:not(:disabled):hover {
+  outline: none;
+  border: 0px solid transparent !important;
+  box-shadow: 0px 0px 0px 0px transparent !important;
+}
+
+.app-button {
+  outline: none;
+  font-size: 14px;
+  color: white;
+  border: 1px solid #d8fdec !important;
+  background-color: #3bd38f !important;
+  cursor: pointer;
+}
+.app-button:disabled {
+  outline: none;
+  font-size: 14px;
+  color: gray;
+  border: 1px solid white;
+  box-shadow: 0px 0px 2px 2px #dfdfdf;
+  cursor: not-allowed !important;
+}
+.app-button:hover {
+  outline: none;
+  background-color: #3bd38f !important;
+  color: white !important;
+  border: 1px solid #bfdbfe;
+}
+.dark .app-button {
+  color: #ffffff;
+  background-color: #2f3e52 !important;
+  border: 1px solid #2f3e52 !important;
+}
+
+.dark .app-button:hover {
+  background-color: #273344 !important;
+  color: white !important;
+  border: 1px solid #273344;
+}
+
+.dark .app-button:disabled {
+  color: #9ca3af;
+  border: 1px solid #4b5563;
+  box-shadow: 0px 0px 2px 2px #1f2937;
+}
+.app-delete-button {
+  outline: none;
+  font-size: 14px;
+  color: #ef4444;
+  border: 1px solid #f6e9e9 !important;
+  background-color: #f6e9e9 !important;
+}
+.app-delete-button:disabled {
+  outline: none;
+  font-size: 14px;
+  color: gray;
+  border: 1px solid white;
+  box-shadow: 0px 0px 2px 2px #dfdfdf;
+  cursor: not-allowed !important;
+}
+.app-delete-button:hover {
+  outline: none;
+  background-color: #ef4444 !important;
+  color: white !important;
+  border: 1px solid #bfdbfe;
+}
+
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #9ca3af;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-checkbox:checked {
+  background-color: #22c55e;
+  border-color: #22c55e;
+}
+
+.custom-checkbox:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: -2px;
+  left: 3px;
+}

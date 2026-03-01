@@ -2,14 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import CustomLayout from "@/components/layout/CustomLayout";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Pencil, Trash2, Plus } from "lucide-react";
+import { Pencil, Trash2, Plus, Users } from "lucide-react";
 import { useCategoryActions } from "@/modules/admin/categories/categories.action";
 import { Button } from "@/components/ui/button";
 import RCTable from "@/components/molecules/RCTable";
 import Pagination from "@/components/molecules/Pagination";
+import PageHeader from "@/components/shared/PageHeader";
+import { Routes } from "@/config/routes";
 
 interface Category {
   id: number;
@@ -101,38 +103,47 @@ const CategoriesPage = () => {
     <CustomLayout>
       {" "}
       <Card className="p-6">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h2 className="text-2xl font-bold">Category List</h2>
-
-            <p className="text-sm text-gray-500">Dashboard / Categories</p>
-          </div>
-          <Link href="/admin/categories/add">
-            <Button>
-              <Plus className="mr-2" size={16} /> Add Category
-            </Button>
-          </Link>
-        </div>
-        {/* Table */}
-        <RCTable
-          originData={originalData}
-          useColumn={useColumn}
-          sortedInfo={sortedInfo}
-          handleSort={handleSort}
-          maxWidth={1200}
-        />
-        {/* Pagination */}
-        <div className="border-t mt-4 pt-4 flex justify-end">
-          <Pagination
-            pageSize={itemsPerPage}
-            current={currentPage}
-            total={totalDataLength}
-            onChange={(page: React.SetStateAction<number>) =>
-              setCurrentPage(page)
-            }
+        <CardContent className="p-0!">
+          {/* Header */}
+          <PageHeader
+            icon={<Users />}
+            title="Category List"
+            breadcrumbs={[
+              { label: "Categories" },
+              { label: "Home", href: Routes.dashboard },
+            ]}
           />
-        </div>
+          <Card className="mt-4 bg-white">
+            <CardContent className="p-2 md:p-6">
+              <div className="flex justify-end items-center mb-2">
+                <Link href="/admin/categories/add">
+                  <Button className="app-button">
+                    <Plus className="mr-2" size={16} /> Add Category
+                  </Button>
+                </Link>
+              </div>
+              {/* Table */}
+              <RCTable
+                originData={originalData}
+                useColumn={useColumn}
+                sortedInfo={sortedInfo}
+                handleSort={handleSort}
+                maxWidth={1200}
+              />
+              {/* Pagination */}
+              <div className="border-t mt-4 pt-4 flex justify-end">
+                <Pagination
+                  pageSize={itemsPerPage}
+                  current={currentPage}
+                  total={totalDataLength}
+                  onChange={(page: React.SetStateAction<number>) =>
+                    setCurrentPage(page)
+                  }
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </CardContent>
       </Card>
     </CustomLayout>
   );

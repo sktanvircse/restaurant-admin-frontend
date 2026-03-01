@@ -3,4 +3,5 @@ export const Routes = {
   dashboard: "/admin",
   login: "/admin/login",
   register: "/admin/register",
+  categories : "/admin/categories"
 };
