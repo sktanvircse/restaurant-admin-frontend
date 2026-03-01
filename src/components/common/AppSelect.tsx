@@ -65,13 +65,13 @@ export const AppSelect: React.FC<AppSelectProps> = ({
           {ShowPages && Pages} {getSelectedLabel(value || "")}
         </SelectValue>
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="bg-white">
         {!hideNone && <SelectItem value="none">None</SelectItem>}
 
         {groups?.length > 0 ? (
           groups?.map((option, optionIndex) => (
             <SelectItem
-              className="capitalize"
+              className="capitalize "
               key={optionIndex}
               value={String(option.value)}
             >

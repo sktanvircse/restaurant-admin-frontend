@@ -87,7 +87,7 @@ const StaffsEditPage = () => {
   if (fetchLoading) {
     return (
       <CustomLayout>
-        <Card className="p-6 mx-auto max-w-2xl">
+        <Card className="p-6 mx-auto ">
           <CardContent className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           </CardContent>
@@ -98,7 +98,7 @@ const StaffsEditPage = () => {
 
   return (
     <CustomLayout>
-      <Card className="p-6 mx-auto max-w-2xl">
+      <Card className="p-6 mx-auto ">
         <CardContent className="p-0!">
           <PageHeader
             icon={<Users />}

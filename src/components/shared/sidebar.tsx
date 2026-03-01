@@ -3,29 +3,33 @@
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
+import {
+  ChevronLeft,
+  CreditCard,
+  LayoutDashboard,
+  ListOrdered,
+  LogOut,
+  Search,
+  Settings,
+  ShieldCheck,
+  ShoppingCart,
+  Table,
+  Users,
+  UtensilsCrossed,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  Users,
-  BarChart3,
-  FileText,
-  Settings,
-  Bell,
-  ShoppingCart,
-  Search,
-  LogOut,
-  ChevronLeft,
-} from "lucide-react";
 import { useState } from "react";
 
 const NAV_ITEMS = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/admin" },
-  { label: "Users", icon: Users, href: "/admin/users" },
-  { label: "Analytics", icon: BarChart3, href: "/admin/analytics" },
+  { label: "Categories", icon: ListOrdered, href: "/admin/categories" },
+  { label: "Foods", icon: UtensilsCrossed, href: "/admin/foods" },
+  { label: "Tables", icon: Table, href: "/admin/tables" },
+  { label: "Staffs", icon: Users, href: "/admin/staffs" },
+  { label: "Roles", icon: ShieldCheck, href: "/admin/roles" },
   { label: "Orders", icon: ShoppingCart, href: "/admin/orders" },
-  { label: "Reports", icon: FileText, href: "/admin/reports" },
-  { label: "Notifications", icon: Bell, href: "/admin/notifications" },
+  { label: "Payments", icon: CreditCard, href: "/admin/payments" },
   { label: "Settings", icon: Settings, href: "/admin/settings" },
 ];
 

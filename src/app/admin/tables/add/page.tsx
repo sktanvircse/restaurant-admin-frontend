@@ -51,7 +51,7 @@ const TablesAddPage = () => {
 
   return (
     <CustomLayout>
-      <Card className="p-6 mx-auto max-w-2xl">
+      <Card className="p-6 mx-auto">
         <CardContent className="p-0!">
           <PageHeader
             icon={<LayoutGrid />}
