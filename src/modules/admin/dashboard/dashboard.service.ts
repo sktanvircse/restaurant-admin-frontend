@@ -1,11 +1,13 @@
+// src/modules/admin/dashboard/dashboard.service.ts
+"use client";
+
 import { useBaseService } from "@/modules/core/base.service";
-import { DashboardSummary } from "./dashboard.type";
-import { API_ENDPOINTS } from "@/endpoints/AdminApiEndPoints";
+import { DashboardData } from "./dashboard.type";
 
 export const useDashboardService = () => {
+  const baseService = useBaseService<DashboardData>("/dashboard");
+
   return {
-    summary: useBaseService<DashboardSummary>(API_ENDPOINTS.DASHBOARD.SUMMARY),
-    ordersByDay: useBaseService<any>(API_ENDPOINTS.DASHBOARD.ORDERS_BY_DAY),
-    revenueByDay: useBaseService<any>(API_ENDPOINTS.DASHBOARD.REVENUE_BY_DAY),
+    getDashboardData: () => baseService.findAll(),
   };
 };

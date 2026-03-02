@@ -1,6 +1,6 @@
 export const Routes = {
   admin: "/admin",
-  dashboard: "/admin",
+  dashboard: "/admin/dashboard",
   login: "/admin/login",
   register: "/admin/register",
   categories: "/admin/categories",
