@@ -19,7 +19,7 @@ export const useAuthActions = () => {
     setLoading(true);
     try {
       const response = await authService.login(credentials);
- console.log("response", response)
+
       if (response) {
         const { token, admin } = response;
 

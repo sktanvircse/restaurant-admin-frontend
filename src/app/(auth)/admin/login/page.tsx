@@ -242,7 +242,7 @@ export default function AdminLoginPage() {
       </div>
 
       <div className="mt-6 text-center text-white text-sm">
-        <p>© 2024 Restaurant Management System. All rights reserved.</p>
+        <p> © {new Date().getFullYear()} Squad Eats. All rights reserved.</p>
       </div>
     </div>
   );

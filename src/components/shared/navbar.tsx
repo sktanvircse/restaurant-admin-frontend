@@ -1,10 +1,14 @@
 "use client";
 
+import { Routes } from "@/config/routes";
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { useStore } from "@/hooks/use-store";
+import { AUTH_USER } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { useAuthActions } from "@/modules/users/users.action";
 import { Bell, Search, ChevronDown, Menu } from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function Navbar() {
   const sidebar = useStore(useSidebarToggle, (s) => s) as {
@@ -15,9 +19,35 @@ export function Navbar() {
   const [notifOpen, setNotifOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
-  if (!sidebar) return null;
+  const [admin, setAdmin] = useState<{
+    id: number;
+    name: string;
+    email: string;
+  } | null>(null);
+  const { logout } = useAuthActions();
 
-  const { isOpen, setIsOpen } = sidebar;
+  const { isOpen, setIsOpen } = sidebar ?? {
+    isOpen: false,
+    setIsOpen: () => {},
+  };
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(AUTH_USER);
+      if (stored) setAdmin(JSON.parse(stored));
+    } catch {}
+  }, []);
+
+  const initials = admin?.name
+    ? admin.name
+        .split(" ")
+        .map((w) => w[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+    : "?";
+
+  if (!sidebar) return null; // safe now, hooks already declared
 
   return (
     <header
@@ -111,11 +141,11 @@ export function Navbar() {
           className="flex items-center gap-2.5 pl-1 pr-2 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-all"
         >
           <div className="w-7 h-7 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0">
-            <span className="text-white text-xs font-bold">JD</span>
+            <span className="text-white text-xs font-bold">{initials}</span>
           </div>
           <div className="hidden sm:block text-left">
             <p className="text-[12px] font-semibold text-gray-800 dark:text-white leading-none">
-              John Doe
+              {admin?.name ?? "Admin"}
             </p>
             <p className="text-[10px] text-gray-400 dark:text-white/30 mt-0.5">
               Admin
@@ -128,22 +158,25 @@ export function Navbar() {
           <div className="absolute right-0 top-12 w-48 bg-white dark:bg-[#161922] border border-black/8 dark:border-white/8 rounded-xl shadow-xl overflow-hidden z-50">
             <div className="px-4 py-3 border-b border-black/6 dark:border-white/6">
               <p className="text-[13px] font-semibold text-gray-800 dark:text-white">
-                John Doe
+                {admin?.name ?? "Admin"}
               </p>
               <p className="text-[11px] text-gray-400 dark:text-white/30">
-                john@example.com
+                {admin?.email ?? ""}
               </p>
             </div>
-            {["Profile", "Settings",].map((item) => (
-              <button
-                key={item}
-                className="w-full text-left px-4 py-2.5 text-[13px] text-gray-600 dark:text-white/60 hover:bg-gray-50 dark:hover:bg-white/4 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                {item}
+            <Link href={Routes.settings}>
+              <button className="w-full cursor-pointer text-left px-4 py-2.5 text-[13px] text-gray-600 dark:text-white/60 hover:bg-gray-50 dark:hover:bg-white/4 hover:text-gray-900 dark:hover:text-white transition-colors">
+                Setting
               </button>
-            ))}
+            </Link>
             <div className="border-t border-black/6 dark:border-white/6">
-              <button className="w-full text-left px-4 py-2.5 text-[13px] text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors">
+              <button
+                onClick={() => {
+                  setProfileOpen(false);
+                  logout();
+                }}
+                className="w-full cursor-pointer text-left px-4 py-2.5 text-[13px] text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+              >
                 Sign out
               </button>
             </div>

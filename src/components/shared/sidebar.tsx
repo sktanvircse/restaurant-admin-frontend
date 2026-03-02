@@ -3,6 +3,7 @@
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
+import { useAuthActions } from "@/modules/users/users.action";
 import {
   ChevronLeft,
   CreditCard,
@@ -40,6 +41,8 @@ export function Sidebar() {
     isOpen: boolean;
     setIsOpen: () => void;
   } | null;
+
+  const { logout } = useAuthActions();
 
   const pathname = usePathname();
   const [search, setSearch] = useState("");
@@ -203,9 +206,10 @@ export function Sidebar() {
         )}
       >
         <button
+          onClick={logout}
           title={!isOpen ? "Sign out" : undefined}
           className={cn(
-            "flex items-center gap-3 w-full rounded-xl text-[13px] font-medium transition-all duration-200 group",
+            "flex items-center gap-3 w-full rounded-xl text-[13px] font-medium transition-all duration-200 group cursor-pointer",
             isOpen ? "px-3 py-2.5" : "justify-center py-2.5 px-0",
             /* light */
             "text-gray-400 hover:text-red-500 hover:bg-red-50/80 border border-transparent hover:border-red-100",
