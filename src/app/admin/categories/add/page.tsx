@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Routes } from "@/config/routes";
 import { useCategoryActions } from "@/modules/admin/categories/categories.action";
-import { LayoutDashboard } from "lucide-react";
+import { ListOrdered } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -47,7 +47,7 @@ const CategoriesAddPage = () => {
       <Card className="p-6 mx-auto">
         <CardContent className="p-0!">
           <PageHeader
-            icon={<LayoutDashboard />}
+            icon={<ListOrdered />}
             title="Add Category"
             breadcrumbs={[
               { label: "Add Category" },

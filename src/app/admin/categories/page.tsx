@@ -9,11 +9,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Routes } from "@/config/routes";
 import { useCategoryActions } from "@/modules/admin/categories/categories.action";
-import { LayoutDashboard, Pencil, Plus, Trash2 } from "lucide-react";
+import { ListOrdered, Pencil, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 interface Category {
   id: number;
@@ -123,7 +122,7 @@ const CategoriesPage = () => {
         <CardContent className="p-0!">
           {/* Header */}
           <PageHeader
-            icon={<LayoutDashboard />}
+            icon={<ListOrdered />}
             title="Category List"
             breadcrumbs={[
               { label: "Categories" },

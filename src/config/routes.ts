@@ -11,4 +11,5 @@ export const Routes = {
   orders: "/admin/orders",
   payments: "/admin/payments",
   settings: "/admin/settings",
+  reports: "/admin/reports",
 };

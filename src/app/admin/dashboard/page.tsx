@@ -68,7 +68,7 @@ const DashboardPage = () => {
     <CustomLayout>
       <div className="space-y-6">
         {/* Welcome Header */}
-        <div className="bg-linear-to-r from-blue-600 to-indigo-600 rounded-lg p-6 text-white">
+        <div className="bg-linear-to-r from-blue-600 to-indigo-600 rounded-lg p-6 text-white m-6">
           <h1 className="text-3xl font-bold mb-2">Dashboard Overview</h1>
           <p className="text-blue-100">
             Welcome back! Here's what's happening with your restaurant today.
@@ -76,7 +76,7 @@ const DashboardPage = () => {
         </div>
 
         {/* Stats Grid - Orders & Revenue */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 m-6">
           {/* Total Orders */}
           <Card className="bg-linear-to-br from-blue-500 to-blue-600 text-white">
             <CardContent className="p-6">
@@ -145,7 +145,7 @@ const DashboardPage = () => {
         </div>
 
         {/* Stats Grid - Resources */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 m-6">
           {/* Foods */}
           <Card className="bg-white border-2 hover:shadow-lg transition-shadow">
             <CardContent className="p-6">

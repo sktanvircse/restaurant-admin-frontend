@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import {
   ChevronLeft,
   CreditCard,
+  FileText,
   LayoutDashboard,
   ListOrdered,
   LogOut,
@@ -22,7 +23,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const NAV_ITEMS = [
-  { label: "Dashboard", icon: LayoutDashboard, href: "/admin" },
+  { label: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
   { label: "Categories", icon: ListOrdered, href: "/admin/categories" },
   { label: "Foods", icon: UtensilsCrossed, href: "/admin/foods" },
   { label: "Tables", icon: Table, href: "/admin/tables" },
@@ -30,6 +31,7 @@ const NAV_ITEMS = [
   { label: "Roles", icon: ShieldCheck, href: "/admin/roles" },
   { label: "Orders", icon: ShoppingCart, href: "/admin/orders" },
   { label: "Payments", icon: CreditCard, href: "/admin/payments" },
+  { label: "Reports", icon: FileText, href: "/admin/reports" },
   { label: "Settings", icon: Settings, href: "/admin/settings" },
 ];
 
