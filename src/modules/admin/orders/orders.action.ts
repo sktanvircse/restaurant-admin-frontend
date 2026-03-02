@@ -43,7 +43,7 @@ export const useOrderActions = () => {
 
   const updateOrderStatus = async (id: number, order_status: string) => {
     try {
-      const res = await service.patchItem(id, { order_status });
+      const res = await service.putItem(id, { order_status });
       toast.success("Order status updated successfully");
       return res.data;
     } catch (error: any) {

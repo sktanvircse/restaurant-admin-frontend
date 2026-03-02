@@ -11,7 +11,7 @@ export const useDashboardActions = () => {
   const getDashboardData = async (): Promise<DashboardData | null> => {
     try {
       const res = await service.getDashboardData();
-      return res.data?.[0] || null;
+      return (res as any).data || null;
     } catch (error: any) {
       toast.error(
         error?.response?.data?.message || "Failed to fetch dashboard data",

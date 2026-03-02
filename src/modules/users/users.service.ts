@@ -16,7 +16,7 @@ export const useAuthService = () => {
   const login = async (credentials: LoginInput) => {
     const response = await baseService
       .getAxiosInstance()
-      .post<LoginResponse>(API_ENDPOINTS.AUTH.LOGIN, credentials);
+      .post<any>(API_ENDPOINTS.AUTH.LOGIN, credentials);
     return response.data;
   };
 

@@ -43,6 +43,7 @@ const DashboardPage = () => {
     setLoading(true);
     try {
       const result = await getDashboardData();
+      console.log("result", result);
       setData(result);
     } catch (error) {
       console.error("Error fetching dashboard data:", error);

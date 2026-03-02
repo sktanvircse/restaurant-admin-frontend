@@ -19,9 +19,11 @@ export const useAuthActions = () => {
     setLoading(true);
     try {
       const response = await authService.login(credentials);
+ console.log("response", response)
+      if (response) {
+        const { token, admin } = response;
 
-      if (response.success && response.data) {
-        const { token, admin } = response.data;
+       
 
         // Save token and user data
         Cookies.set(AUTH_TOKEN_KEY, token, { expires: 7 });
@@ -33,7 +35,7 @@ export const useAuthActions = () => {
 
         return { success: true, data: response.data };
       } else {
-        throw new Error(response.message || "Login failed");
+        throw new Error(response || "Login failed");
       }
     } catch (error: any) {
       const errorMessage =

@@ -171,14 +171,14 @@ export default function AdminLoginPage() {
                 Remember me
               </label>
             </div>
-            <div className="text-sm">
+            {/* <div className="text-sm">
               <a
                 href="#"
                 className="font-medium text-blue-600 hover:text-blue-500"
               >
                 Forgot password?
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Submit Button */}
@@ -220,7 +220,7 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        <div className="mt-6 text-center">
+        {/* <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{" "}
             <Link
@@ -230,14 +230,14 @@ export default function AdminLoginPage() {
               Register here
             </Link>
           </p>
-        </div>
+        </div> */}
 
         <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
           <p className="text-xs text-gray-600 font-semibold mb-2">
             Demo Credentials:
           </p>
-          <p className="text-xs text-gray-600">Email: admin@restaurant.com</p>
-          <p className="text-xs text-gray-600">Password: admin123</p>
+          <p className="text-xs text-gray-600">Email: admin@gmail.com</p>
+          <p className="text-xs text-gray-600">Password: 123456</p>
         </div>
       </div>
 
