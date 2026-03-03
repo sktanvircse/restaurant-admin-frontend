@@ -142,14 +142,16 @@ const FoodsPage = () => {
             size="icon"
             variant="outline"
             onClick={() => router.push(`/admin/foods/edit/${record.id}`)}
+            className="p-1! w-8! h-8! cursor-pointer"
           >
             <Pencil size={16} />
           </Button>
 
           <Button
             size="icon"
-            variant="destructive"
+            variant="outline"
             onClick={() => handleDelete(record.id)}
+            className="p-1! w-8! h-8! cursor-pointer"
           >
             <Trash2 size={16} />
           </Button>

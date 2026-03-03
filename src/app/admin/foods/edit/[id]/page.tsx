@@ -233,6 +233,7 @@ const FoodsEditPage = () => {
                     variant="outline"
                     onClick={() => router.push("/admin/foods")}
                     disabled={loading}
+                    className="cursor-pointer"
                   >
                     Cancel
                   </Button>

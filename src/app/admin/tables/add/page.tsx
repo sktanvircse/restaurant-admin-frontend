@@ -141,6 +141,7 @@ const TablesAddPage = () => {
                     variant="outline"
                     onClick={() => router.push("/admin/tables")}
                     disabled={loading}
+                    className="cursor-pointer"
                   >
                     Cancel
                   </Button>

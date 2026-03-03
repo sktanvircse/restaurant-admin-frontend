@@ -98,7 +98,7 @@ body {
   font-size: 14px;
   color: white;
   border: 1px solid #d8fdec !important;
-  background-color: #3bd38f !important;
+  background-color: #15803d !important;
   cursor: pointer;
 }
 .app-button:disabled {
@@ -111,7 +111,7 @@ body {
 }
 .app-button:hover {
   outline: none;
-  background-color: #3bd38f !important;
+  background-color: rgb(28, 94, 64) !important;
   color: white !important;
   border: 1px solid #bfdbfe;
 }
@@ -177,4 +177,28 @@ body {
   position: absolute;
   top: -2px;
   left: 3px;
+}
+
+.rc-pagination-item-active {
+  background-color: #15803d !important;
+  border-color: #15803d !important;
+}
+
+.rc-pagination-item-active a {
+  color: white !important;
+}
+
+.rc-pagination-item-active:hover {
+  background-color: #166534 !important; /* darker green */
+  border-color: #166534 !important;
+}
+
+.rc-pagination-item-active:hover a {
+  color: white !important;
+}
+
+/* Optional: normal item hover */
+.rc-pagination-item:not(.rc-pagination-item-active):hover {
+  border-color: #4ade80 !important;
+  background-color: #f0fdf4 !important;
 }

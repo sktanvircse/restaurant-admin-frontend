@@ -11,15 +11,25 @@ import { usePathname } from "next/navigation";
 const paginationStyles = {
   base: {
     item: `
-      [&>.rc-pagination-item>a]:!no-underline
-      [&>.rc-pagination-item>a]:font-medium
-      [&>li.rc-pagination-item]:border-green-200
-      [&>.rc-pagination-item:not(.rc-pagination-item-active)]:bg-transparent
-      [&>.rc-pagination-item:not(.rc-pagination-item-active)>a]:text-green-700
-      [&>.rc-pagination-item:not(.rc-pagination-item-active)]:hover:border-green-400
-      [&>.rc-pagination-item:not(.rc-pagination-item-active)]:hover:bg-green-50
-      dark:[&>.rc-pagination-item:not(.rc-pagination-item-active)>a]:text-green-300
-    `,
+  [&>.rc-pagination-item>a]:!no-underline
+  [&>.rc-pagination-item>a]:font-medium
+
+  /* Remove default blue */
+  [&>.rc-pagination-item-active]:!bg-green-700
+  [&>.rc-pagination-item-active]:!border-green-700
+  [&>.rc-pagination-item-active>a]:!text-white
+
+  /* Fix hover on active */
+  [&>.rc-pagination-item-active:hover]:!bg-green-800
+  [&>.rc-pagination-item-active:hover]:!border-green-800
+
+  /* Normal items */
+  [&>li.rc-pagination-item]:border-green-200
+  [&>.rc-pagination-item:not(.rc-pagination-item-active)]:bg-transparent
+  [&>.rc-pagination-item:not(.rc-pagination-item-active)>a]:text-green-700
+  [&>.rc-pagination-item:not(.rc-pagination-item-active)]:hover:border-green-400
+  [&>.rc-pagination-item:not(.rc-pagination-item-active)]:hover:bg-green-50
+`,
     icon: `
       [&>.rc-pagination-prev]:align-baseline
       [&>.rc-pagination-next]:align-baseline

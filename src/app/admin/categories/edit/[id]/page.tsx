@@ -142,6 +142,7 @@ const CategoriesEditPage = () => {
                     variant="outline"
                     onClick={() => router.push("/admin/categories")}
                     disabled={loading}
+                    className="cursor-pointer"
                   >
                     Cancel
                   </Button>

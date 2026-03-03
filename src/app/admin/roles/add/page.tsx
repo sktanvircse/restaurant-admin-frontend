@@ -129,6 +129,7 @@ const RolesAddPage = () => {
                     variant="outline"
                     onClick={() => router.push("/admin/roles")}
                     disabled={loading}
+                    className="cursor-pointer"
                   >
                     Cancel
                   </Button>

@@ -118,6 +118,7 @@ const TablesPage = () => {
           <Button
             size="icon"
             variant="outline"
+            className="p-1! w-8! h-8! cursor-pointer"
             onClick={() => router.push(`/admin/tables/edit/${record.id}`)}
           >
             <Pencil size={16} />
@@ -125,7 +126,8 @@ const TablesPage = () => {
 
           <Button
             size="icon"
-            variant="destructive"
+            variant="outline"
+            className="p-1! w-8! h-8! cursor-pointer"
             onClick={() => handleDelete(record.id)}
           >
             <Trash2 size={16} />

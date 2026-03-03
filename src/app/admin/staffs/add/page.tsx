@@ -158,6 +158,7 @@ const StaffsAddPage = () => {
                     variant="outline"
                     onClick={() => router.push("/admin/staffs")}
                     disabled={loading}
+                    className="cursor-pointer"
                   >
                     Cancel
                   </Button>
