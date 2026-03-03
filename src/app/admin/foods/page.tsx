@@ -162,6 +162,11 @@ const FoodsPage = () => {
 
   const totalDataLength = originalData.length;
 
+  const paginatedData = originalData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
   return (
     <CustomLayout>
       <Card className="p-6">
@@ -194,7 +199,7 @@ const FoodsPage = () => {
                 <>
                   {/* Table */}
                   <RCTable
-                    originData={originalData}
+                    originData={paginatedData}
                     useColumn={useColumn}
                     sortedInfo={sortedInfo}
                     handleSort={handleSort}

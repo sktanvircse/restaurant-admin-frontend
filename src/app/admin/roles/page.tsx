@@ -140,6 +140,11 @@ const RolesPage = () => {
   const activeCount = originalData.filter((r) => r.status).length;
   const inactiveCount = originalData.filter((r) => !r.status).length;
 
+  const paginatedData = originalData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
   return (
     <CustomLayout>
       <Card className="p-6">
@@ -220,7 +225,7 @@ const RolesPage = () => {
                 <>
                   {/* Table */}
                   <RCTable
-                    originData={originalData}
+                    originData={paginatedData}
                     useColumn={useColumn}
                     sortedInfo={sortedInfo}
                     handleSort={handleSort}

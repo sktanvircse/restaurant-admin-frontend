@@ -145,6 +145,11 @@ const TablesPage = () => {
     (t) => t.status === "occupied",
   ).length;
 
+  const paginatedData = originalData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
   return (
     <CustomLayout>
       <Card className="p-6">
@@ -227,7 +232,7 @@ const TablesPage = () => {
                 <>
                   {/* Table */}
                   <RCTable
-                    originData={originalData}
+                    originData={paginatedData}
                     useColumn={useColumn}
                     sortedInfo={sortedInfo}
                     handleSort={handleSort}
